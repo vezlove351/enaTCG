@@ -13,7 +13,12 @@ import {
 } from "@/components/ui/dialog"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
-export function WalletConnect({ onConnect, className = "" }) {
+interface WalletConnectProps {
+  onConnect?: (walletInfo: { address: string; balance: number; walletType: string }) => void;
+  className?: string;
+}
+
+export function WalletConnect({ onConnect, className = "" }: WalletConnectProps) {
   const [isConnecting, setIsConnecting] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
   const [walletAddress, setWalletAddress] = useState("")
@@ -22,7 +27,7 @@ export function WalletConnect({ onConnect, className = "" }) {
   const [dialogOpen, setDialogOpen] = useState(false)
 
   // Simulated wallet connection
-  const connectWallet = async (walletType) => {
+  const connectWallet = async (walletType: string) => {
     setIsConnecting(true)
     setError("")
 
@@ -189,7 +194,15 @@ export function WalletConnect({ onConnect, className = "" }) {
   )
 }
 
-function WalletOption({ name, icon, description, onClick, isLoading }) {
+interface WalletOptionProps {
+  name: string;
+  icon?: string;
+  description: string;
+  onClick: () => void;
+  isLoading: boolean;
+}
+
+function WalletOption({ name, icon, description, onClick, isLoading }: WalletOptionProps) {
   return (
     <button
       className="bg-black/30 p-4 rounded-lg hover:bg-black/50 transition border border-gray-700 hover:border-ena-yellow text-left"

@@ -1,6 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-export function CombatLog({ messages }) {
+export function CombatLog({ messages }: { messages: string[] }) {
   return (
     <div className="w-64 bg-ena-darkgray/50 rounded-lg p-3 border border-gray-700">
       <h3 className="text-sm font-bold mb-2 text-ena-yellow font-main">COMBAT LOG</h3>

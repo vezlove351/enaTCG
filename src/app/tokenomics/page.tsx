@@ -490,7 +490,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>30% (630,000,000 $ENA)</span>
                       </div>
-                      <Progress value={30} className="h-2 bg-gray-700" indicatorClassName="bg-ena-green" />
+                      <Progress value={30} className="h-2 bg-gray-700 [&>div]:bg-ena-green" />
                       <p className="text-xs text-gray-400 mt-1">REWARDS FOR NFT HOLDERS WHO STAKE THEIR CARDS</p>
                     </div>
 
@@ -502,7 +502,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>30% (630,000,000 $ENA)</span>
                       </div>
-                      <Progress value={30} className="h-2 bg-gray-700" indicatorClassName="bg-ena-blue" />
+                      <Progress value={30} className="h-2 bg-gray-700 [&>div]:bg-ena-blue" />
                       <p className="text-xs text-gray-400 mt-1">REWARDS FOR USERS WHO STAKE THEIR $ENA TOKENS</p>
                     </div>
 
@@ -514,7 +514,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>20% (420,000,000 $ENA)</span>
                       </div>
-                      <Progress value={20} className="h-2 bg-gray-700" indicatorClassName="bg-ena-purple" />
+                      <Progress value={20} className="h-2 bg-gray-700 [&>div]:bg-ena-purple" />
                       <p className="text-xs text-gray-400 mt-1">ALLOCATED TO PROVIDE MARKET LIQUIDITY</p>
                     </div>
 
@@ -526,7 +526,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>10% (210,000,000 $ENA)</span>
                       </div>
-                      <Progress value={10} className="h-2 bg-gray-700" indicatorClassName="bg-ena-yellow" />
+                      <Progress value={10} className="h-2 bg-gray-700 [&>div]:bg-ena-yellow" />
                       <p className="text-xs text-gray-400 mt-1">ALLOCATED FOR MARKETING CAMPAIGNS AND PROMOTIONS</p>
                     </div>
 
@@ -538,7 +538,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>5% (105,000,000 $ENA)</span>
                       </div>
-                      <Progress value={5} className="h-2 bg-gray-700" indicatorClassName="bg-ena-red" />
+                      <Progress value={5} className="h-2 bg-gray-700 [&>div]:bg-ena-red" />
                       <p className="text-xs text-gray-400 mt-1">ALLOCATED TO THE DEVELOPMENT TEAM</p>
                     </div>
 
@@ -550,7 +550,7 @@ export default function TokenomicsPage() {
                         </div>
                         <span>5% (105,000,000 $ENA)</span>
                       </div>
-                      <Progress value={5} className="h-2 bg-gray-700" indicatorClassName="bg-ena-gold" />
+                      <Progress value={5} className="h-2 bg-gray-700 [&>div]:bg-ena-gold" />
                       <p className="text-xs text-gray-400 mt-1">ALLOCATED FOR COMMUNITY AIRDROPS AND REWARDS</p>
                     </div>
                   </div>

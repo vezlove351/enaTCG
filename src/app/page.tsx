@@ -270,6 +270,20 @@ export default function Home() {
   )
 }
 
+interface CardPreviewProps {
+  name: string;
+  rarity: string;
+  type: string;
+  attack: number;
+  defense: number;
+  imagePath: string;
+  description: string;
+  special?: string;
+  cardType?: string;
+  manaCost?: number;
+  cardColor?: string;
+}
+
 function CardPreview({
   name,
   rarity,
@@ -282,7 +296,7 @@ function CardPreview({
   cardType = "UNIT",
   manaCost,
   cardColor = "",
-}) {
+}: CardPreviewProps) {
   return (
     <div
       className={`group relative aspect-[2/3] rounded-lg overflow-hidden border-2 border-ena-yellow transition-transform hover:scale-105 hover:shadow-lg hover:shadow-ena-yellow/20 ${cardColor}`}
@@ -321,7 +335,12 @@ function CardPreview({
   )
 }
 
-function FeatureItem({ title, description }) {
+interface FeatureItemProps {
+  title: string;
+  description: string;
+}
+
+function FeatureItem({ title, description }: FeatureItemProps) {
   return (
     <li className="flex gap-3">
       <div className="mt-1 bg-ena-yellow rounded-full p-1 h-fit">

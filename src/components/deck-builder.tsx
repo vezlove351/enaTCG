@@ -18,18 +18,23 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 
-export function DeckBuilder({ onSaveDeck, onCancel }) {
+interface DeckBuilderProps {
+  onSaveDeck: (deck: { id: number, name: string, cards: any[] }) => void;
+  onCancel: () => void;
+}
+
+export function DeckBuilder({ onSaveDeck, onCancel }: DeckBuilderProps) {
   const [searchTerm, setSearchTerm] = useState("")
   const [rarityFilter, setRarityFilter] = useState("all")
   const [typeFilter, setTypeFilter] = useState("all")
   const [cardTypeFilter, setCardTypeFilter] = useState("all")
-  const [currentDeck, setCurrentDeck] = useState([])
+  const [currentDeck, setCurrentDeck] = useState<GameCard[]>([])
   const [deckName, setDeckName] = useState("New Deck")
-  const [savedDecks, setSavedDecks] = useState([
+  const [savedDecks, setSavedDecks] = useState<Deck[]>([
     { id: 1, name: "Ashen Order Aggro", cards: initialDeck.slice(0, 15) },
     { id: 2, name: "Shinobyte Control", cards: initialDeck.slice(5, 20) },
   ])
-  const [selectedDeck, setSelectedDeck] = useState(null)
+  const [selectedDeck, setSelectedDeck] = useState<number | null>(null)
   const [saveDeckDialogOpen, setSaveDeckDialogOpen] = useState(false)
 
   // Get unique values for filters
@@ -50,14 +55,34 @@ export function DeckBuilder({ onSaveDeck, onCancel }) {
   })
 
   // Load deck
-  const loadDeck = (deck) => {
+  interface GameCard {
+    id: number;
+    name: string;
+    description: string;
+    rarity: string;
+    type: string;
+    cardType: string;
+    manaCost?: number;
+    imagePath?: string;
+    attack?: number;
+    defense?: number;
+    special?: any;
+  }
+  
+  interface Deck {
+    id: number;
+    name: string;
+    cards: GameCard[];
+  }
+
+  const loadDeck = (deck: Deck): void => {
     setCurrentDeck([...deck.cards])
     setDeckName(deck.name)
     setSelectedDeck(deck.id)
   }
 
   // Add card to deck
-  const addCardToDeck = (card) => {
+  const addCardToDeck = (card: GameCard) => {
     // Check if already have 2 copies
     const cardCount = currentDeck.filter((c) => c.id === card.id).length
     if (cardCount >= 2) {
@@ -73,7 +98,7 @@ export function DeckBuilder({ onSaveDeck, onCancel }) {
   }
 
   // Remove card from deck
-  const removeCardFromDeck = (index) => {
+  const removeCardFromDeck = (index: number): void => {
     const newDeck = [...currentDeck]
     newDeck.splice(index, 1)
     setCurrentDeck(newDeck)
@@ -120,14 +145,14 @@ export function DeckBuilder({ onSaveDeck, onCancel }) {
   const deckStats = {
     unitCount: currentDeck.filter((card) => card.cardType === "UNIT").length,
     spellCount: currentDeck.filter((card) => card.cardType === "SPELL").length,
-    factionCounts: currentDeck.reduce((acc, card) => {
+    factionCounts: currentDeck.reduce<Record<string, number>>((acc, card) => {
       const faction = card.type
       acc[faction] = (acc[faction] || 0) + 1
       return acc
     }, {}),
     manaCurve: currentDeck.reduce(
       (acc, card) => {
-        const cost = Math.min(card.manaCost || 0, 7)
+        const cost = Math.min(card.manaCost || 0, 7) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
         acc[cost] = (acc[cost] || 0) + 1
         return acc
       },

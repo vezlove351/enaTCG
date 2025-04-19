@@ -2,7 +2,24 @@ import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Zap } from "lucide-react"
 
-export function GameCard({ card, mini = false, disabled = false }) {
+interface GameCardProps {
+  card: {
+    name: string;
+    rarity: string;
+    type: string;
+    attack?: number;
+    defense?: number;
+    description?: string;
+    special?: string;
+    cardType: string;
+    manaCost?: number;
+    imagePath?: string;
+  };
+  mini?: boolean;
+  disabled?: boolean;
+}
+
+export function GameCard({ card, mini = false, disabled = false }: GameCardProps) {
   if (!card) return null
 
   const { name, rarity, type, attack, defense, description, special, cardType, manaCost, imagePath } = card
