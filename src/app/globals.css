@@ -1,26 +1,97 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+
+    --radius: 0.5rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: #1f2937; /* Direct CSS instead of Tailwind utility */
+  }
+  body {
+    background-color: #000; /* Direct CSS */
+    color: #fff; /* Direct CSS */
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .card-title {
+    font-family: var(--font-cards), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+}
+
+/* Custom styles for ENA Universe TCG */
+.ena-gradient {
+  background: linear-gradient(to bottom, #000000, #272a2f);
+}
+
+.card-border {
+  border: 2px solid #ffe100;
+  box-shadow: 0 0 10px rgba(255, 225, 0, 0.5);
+}
+
+.mana-card {
+  background-color: #8449b5;
+  border: 1px solid #9b6bc9;
+}
+
+.neutral-card {
+  background-color: #c89116;
+  border: 1px solid #e9a92c;
+}
+
+.red-card {
+  background-color: #7c200f;
+  border: 1px solid #9a2812;
+}
+
+.green-card {
+  background-color: #7ed957;
+  border: 1px solid #9ae97c;
+}
+
+.blue-card {
+  background-color: #0c49ac;
+  border: 1px solid #1259cc;
 }
