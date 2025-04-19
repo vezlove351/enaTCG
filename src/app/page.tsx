@@ -2,6 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, Wallet, Coins } from "lucide-react"
+import { client } from "@/client";
+import { ConnectButton } from "thirdweb/react";
 
 export default function Home() {
   return (
@@ -46,7 +48,8 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-          <Button className="bg-ena-yellow text-black hover:bg-ena-yellow/80 font-main">CONNECT WALLET</Button>
+          <ConnectButton client={client} />
+          {/* <Button className="bg-ena-yellow text-black hover:bg-ena-yellow/80 font-main">CONNECT WALLET</Button> */}
         </div>
       </header>
 

@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ThirdwebProvider } from "thirdweb/react";
 
 // Import the fonts we need for the ENA Universe TCG
 import { Orbitron, Rajdhani } from "next/font/google"
@@ -40,9 +41,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.variable} ${orbitron.variable} ${rajdhani.variable} font-sans`}>
+      <ThirdwebProvider>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
+        </ThirdwebProvider>
       </body>
     </html>
   )
